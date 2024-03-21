@@ -1,4 +1,5 @@
 #!/bin/bash
+# 13-Nextcloud
 
 # 服务器初始设置
 apt update -y && apt upgrade -y  #更新一下包
@@ -46,16 +47,8 @@ EOF
 
 # ctrl+x退出，按y保存，enter确认
 
-# 运行docker-compose
-# 查看端口是否被占用
-lsof -i:8130  # 80
-lsof -i:8131  # 443
-
 # 运行
 docker-compose up -d 
-
-# 重启docker服务
-docker-compose restart
 
 # 打开防火墙的端口
 ufw allow 8130
@@ -67,10 +60,3 @@ echo "访问 Nextcloud 链接:"
 echo "IP: 192.168.1.1:8130"
 echo "Email: ghuang0425@gmail.com"
 echo "Password: gmail.com"
-
-# 更新 Nextcloud
-echo "更新 Nextcloud:"
-cp -r /root/data/docker_data/Nextcloud /root/data/docker_data/Nextcloud.archive  # 万事先备份，以防万一
-cd /root/data/docker_data/Nextcloud  # 进入docker-compose所在的文件夹
-docker-compose pull    # 拉取最新的镜像
-docker-compose up -d   # 重新更新当前镜像

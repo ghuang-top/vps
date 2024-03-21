@@ -1,4 +1,5 @@
 #!/bin/bash
+# 14-Joplin
 
 # 服务器初始设置
 apt update -y && apt upgrade -y  #更新一下包
@@ -11,8 +12,8 @@ nano docker-compose.yml
 
 # 填写docker-compose配置
 cat <<EOF > docker-compose.yml
-version: '3'
 
+version: '3'
 services:
     db:
         image: postgres:13
@@ -44,14 +45,10 @@ services:
             - POSTGRES_DATABASE=joplin
             - POSTGRES_PORT=5432 # 与上面右边的对应！
             - POSTGRES_HOST=db
+
 EOF
 
 # ctrl+x退出，按y保存，enter确认
-
-# 运行docker-compose
-# 查看端口是否被占用
-lsof -i:8140  # 80
-lsof -i:8141  # 443
 
 # 运行
 docker-compose up -d 
@@ -66,10 +63,3 @@ echo "访问 Joplin 链接:"
 echo "IP: 192.168.1.11:8140"
 echo "Email: ghuang0425@gmail.com"
 echo "Password: gmail.com"
-
-# 更新 Joplin
-echo "更新 Joplin:"
-cp -r /root/data/docker_data/Joplin /root/data/docker_data/Joplin.archive  # 万事先备份，以防万一
-cd /root/data/docker_data/Joplin  # 进入docker-compose所在的文件夹
-docker-compose pull    # 拉取最新的镜像
-docker-compose up -d   # 重新更新当前镜像

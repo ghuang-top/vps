@@ -1,4 +1,5 @@
 #!/bin/bash
+# 12-Wordpress
 
 # VPS Initialization
 apt update -y && apt upgrade -y  #更新一下包
@@ -66,11 +67,6 @@ EOF
 
 # ctrl+x退出，按y保存，enter确认
 
-# 运行docker-compose
-# 查看端口是否被占用
-lsof -i:8120  # 80
-lsof -i:8121  # 443
-
 # 运行
 docker-compose up -d 
 
@@ -84,17 +80,7 @@ echo "访问 Wordpress 链接:"
 echo "IP: 192.168.1.1:8120"
 echo "Email: eddy"
 echo "Password: Asd123wjsw"
+
+echo "更改"
 echo "Email: ghuang0425@gmail.com"
 echo "Password: G&WrOa#TqniQHHVGO6"
-
-# 安装主题
-echo "安装主题:"
-echo "1、获取主题: https://github.com/owen0o0/WebStack/releases"
-echo "2、上传到 Wordpress 安装"
-
-# 更新 Wordpress
-echo "更新 Wordpress:"
-cp -r /root/data/docker_data/Wordpress /root/data/docker_data/Wordpress.archive  # 万事先备份，以防万一
-cd /root/data/docker_data/Wordpress  # 进入docker-compose所在的文件夹
-docker-compose pull    # 拉取最新的镜像
-docker-compose up -d   # 重新更新当前镜像
