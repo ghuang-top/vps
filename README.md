@@ -60,3 +60,9 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/13-Nex
 ```sh
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/14-Joplin.sh && chmod +x 14-Joplin.sh && ./14-Joplin.sh
 ```
+
+
+- All-in-One
+```sh
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/All-in-One.sh && chmod +x All-in-One.sh && ./All-in-One.sh
+```
