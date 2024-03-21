@@ -1,14 +1,8 @@
 #!/bin/bash
 
 # VPS Initialization
-sudo -i # 切换到root用户
 apt update -y && apt upgrade -y  # 更新一下包
 apt install wget curl sudo vim git lsof -y # Debian系统比较干净，安装常用的软件
-
-# 获取 Token
-echo "获取 Token:"
-openssl rand -base64 48
-echo "TOKEN: FX6wU1n3i1huwVE9zo9zb6hGiX5fS5URTPhSWGK0pBu1weww0Kr0qcv6GbULX7az"
 
 # 创建Vaultwarden安装目录
 mkdir -p /root/data/docker_data/Vaultwarden
