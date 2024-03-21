@@ -36,7 +36,7 @@ docker rm nginx
 # 配置Nginx的docker-compose
 # 打开docker-compose
 cd /root/data/docker_data/Nginx
-nano docker-compose.yml
+vim docker-compose.yml
 
 # 输入docker-compose
 cat <<EOF > docker-compose.yml
