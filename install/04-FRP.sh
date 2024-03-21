@@ -1,7 +1,7 @@
 #!/bin/bash
+# 04-FRP
 
 # VPS Initialization
-sudo -i # 切换到root用户
 apt update -y && apt upgrade -y  # 更新一下包
 apt install wget curl sudo vim git lsof ufw -y # Debian系统比较干净，安装常用的软件
 
@@ -24,6 +24,7 @@ services:
 EOF
 
 # ctrl+x退出，按y保存，enter确认
+
 
 # 创建frps.toml文件并设置配置
 cd /root/data/docker_data/Frps
@@ -50,10 +51,6 @@ dashboard_port=8040
 token=PAioH8syP!82T%
 EOF
 
-# 运行docker-compose
-# 查看端口是否被占用
-lsof -i:8040  # 80
-lsof -i:8041  # 80
 
 # 运行
 docker-compose up -d 
@@ -66,12 +63,6 @@ ufw allow 8040
 ufw allow 8041
 ufw status
 
-# 打印访问链接
-echo "访问 Frps 链接:"
-echo "IP: 192.168.1.1:8040"
-echo "Email: ghuang0425@gmail.com"
-echo "Password: gmail.com"
-echo "开启客户端端口:"
 
 # 开启客户端端口
 ufw allow 22
@@ -94,16 +85,8 @@ ufw allow 7110
 ufw allow 7111
 ufw status
 
-# 更新 Frps(非必须)
-echo "更新 Frps(非必须):"
-docker-compose down 
-cp -r /root/data/docker_data/Frps /root/data/docker_data/Frps.archive
-docker-compose pull
-docker-compose up -d 
-docker image prune
-
-# 卸载 Frps(非必须)
-echo "卸载 Frps(非必须):"
-docker stop frps
-docker rm -f frps
-rm -rf /root/data/docker_data/Frps
+# 打印访问链接
+echo "访问 Frps 链接:"
+echo "IP: 192.168.1.1:8040"
+echo "Email: ghuang0425@gmail.com"
+echo "Password: gmail.com"
