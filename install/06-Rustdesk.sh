@@ -48,6 +48,7 @@ services:
     networks:
       - rustdesk-net
     restart: unless-stopped
+    
 EOF
 
 # ctrl+x退出，按y保存，enter确认

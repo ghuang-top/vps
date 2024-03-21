@@ -12,15 +12,16 @@ nano docker-compose.yml
 
 # 配置Frps的docker-compose
 cat <<EOF > docker-compose.yml
-    version: '3.3'
-    services:
-        frps:
-            image: snowdreamtech/frps
-            container_name: frps
-            restart: always
-            network_mode: host
-            volumes:
-                - './frps.toml:/etc/frp/frps.toml'
+version: '3.3'
+services:
+    frps:
+        image: snowdreamtech/frps
+        container_name: frps
+        restart: always
+        network_mode: host
+        volumes:
+            - './frps.toml:/etc/frp/frps.toml'
+
 EOF
 
 # ctrl+x退出，按y保存，enter确认
