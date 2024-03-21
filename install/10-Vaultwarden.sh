@@ -1,4 +1,5 @@
 #!/bin/bash
+# 10-Vaultwarden
 
 # VPS Initialization
 apt update -y && apt upgrade -y  # 更新一下包
@@ -37,11 +38,6 @@ EOF
 
 # ctrl+x退出，按y保存，enter确认
 
-# 运行docker-compose
-# 查看端口是否被占用
-lsof -i:8100  # 80
-lsof -i:8101  # 443
-
 # 运行
 docker-compose up -d 
 
@@ -54,10 +50,3 @@ ufw status
 echo "访问 Vaultwarden 链接:"
 echo "IP: 192.168.1.1:8100"
 echo "admin@example.com"
-
-# 更新 Vaultwarden
-echo "更新 Vaultwarden:"
-cp -r /root/data/docker_data/Vaultwarden /root/data/docker_data/Vaultwarden.archive  # 万事先备份，以防万一
-cd /root/data/docker_data/Vaultwarden  # 进入docker-compose所在的文件夹
-docker-compose pull    # 拉取最新的镜像
-docker-compose up

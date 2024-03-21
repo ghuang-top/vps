@@ -1,7 +1,7 @@
 #!/bin/bash
+# 11-EasyImage
 
 # VPS Initialization
-sudo -i # 切换到root用户
 apt update -y && apt upgrade -y  # 更新一下包
 apt install wget curl sudo vim git lsof -y # Debian系统比较干净，安装常用的软件
 
@@ -31,11 +31,6 @@ EOF
 
 # ctrl+x退出，按y保存，enter确认
 
-# 运行docker-compose
-# 查看端口是否被占用
-lsof -i:8110  # 80
-lsof -i:8111  # 443
-
 # 运行
 docker-compose up -d 
 
@@ -49,11 +44,3 @@ echo "访问 EasyImage 链接:"
 echo "IP: 192.168.1.11:8110"
 echo "Email: admin"
 echo "Password: admin@123"
-
-# 更新 EasyImage
-echo "更新 EasyImage:"
-cp -r /root/data/docker_data/EasyImage /root/data/docker_data/EasyImage.archive  # 万事先备份，以防万一
-cd /root/data/docker_data/EasyImage  # 进入docker-compose所在的文件夹
-docker-compose pull    # 拉取最新的镜像
-docker-compose up -d   # 重新更新当前镜像
-docker exec -it EasyImage rm -rf /app/web/install #因为更新后镜像自带install目录，所以要删除
