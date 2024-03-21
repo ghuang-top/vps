@@ -2,7 +2,8 @@
 vps脚本
 
 
-```sh title="IP"
+- 00-Initialization
+```sh
 https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-Initialization.sh
 ```
 
