@@ -12,7 +12,6 @@ nano docker-compose.yml
 
 # 填写docker-compose配置
 cat <<EOF > docker-compose.yml
-
 version: '3'
 services:
     db:
