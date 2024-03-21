@@ -1,7 +1,7 @@
 #!/bin/bash
+# 02-NginxProxy
 
 # VPS Initialization
-sudo -i # 切换到root用户
 apt update -y && apt upgrade -y  # 更新一下包
 apt install wget curl sudo vim git lsof -y # Debian系统比较干净，安装常用的软件
 
@@ -47,12 +47,5 @@ ufw status
 # 打印访问链接
 echo "访问链接:"
 echo "http://your_ip_address:8020"
-echo "登录信息:"
-echo "IP: 192.168.1.1:8020"
 echo "Email: admin@example.com"
 echo "Password: changeme"
-echo "修改密码信息:"
-echo "Email: ghuang0425@gmail.com"
-echo "Password: gmail.com"
-echo "反向代理链接:"
-echo "https://nginxproxy.ghuang.top"

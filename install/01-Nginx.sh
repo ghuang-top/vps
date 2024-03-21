@@ -81,5 +81,4 @@ ufw status
 echo "访问链接:"
 echo "http://your_ip_address:8010"
 echo "http://your_ip_address:8010/blog/site/"
-echo "反向代理链接:"
-echo "https://nginx.ghuang.top"
+
