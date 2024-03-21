@@ -1,8 +1,7 @@
 #!/bin/bash
-
 # 01-Nginx
+
 # VPS Initialization
-## sudo -i # 切换到root用户
 apt update -y && apt upgrade -y  # 更新一下包
 apt install wget curl sudo vim git lsof ufw -y # Debian系统比较干净，安装常用的软件
 
