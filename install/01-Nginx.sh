@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# 01-Nginx
 # VPS Initialization
 ## sudo -i # 切换到root用户
 apt update -y && apt upgrade -y  # 更新一下包
