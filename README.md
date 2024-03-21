@@ -1,13 +1,6 @@
 # vps
 vps脚本
 
-```yaml
-
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/02-Nginx%20Proxy.sh && chmod +x 02-Nginx\ Proxy.sh && ./02-Nginx\ Proxy.sh
-
-
-```
-
 - 00-Initialization
 ```sh
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-Initialization.sh && chmod +x 00-Initialization.sh && ./00-Initialization.sh
@@ -20,7 +13,7 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/01-Ngi
 
 - 02-NginxProxy
 ```sh
-https://raw.githubusercontent.com/ghuang-top/vps/main/install/02-Nginx%20Proxy.sh
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/02-NginxProxy.sh && chmod +x 02-NginxProxy.sh && ./02-NginxProxy.sh
 ```
 
 - 03-X-UI
