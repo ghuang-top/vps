@@ -40,27 +40,26 @@ nano docker-compose.yml
 
 # 输入docker-compose
 
-
-# 将配置内容通过echo命令重定向到docker-compose.yml文件中
-echo 'version: "3"
-services:
-    nginx:
-        image: nginx
-        container_name: nginx
-        restart: always
-        ports:
-          - 8010:80
-          - 8011:443
-        volumes:
-          - ./conf/nginx.conf:/etc/nginx/nginx.conf
-          - ./conf/conf.d:/etc/nginx/conf.d
-          - ./log:/var/log/nginx
-          - ./www:/var/www
-          - ./html:/usr/share/nginx/html
-        environment:
-          - NGINX_PORT=80
-          - TZ=Asia/Shanghai' > docker-compose.yml
-
+cat <<EOF > docker-compose.yml
+  version: '3'
+  services:
+      nginx:
+          image: nginx
+          container_name: nginx
+          restart: always
+          ports:
+            - 8010:80
+            - 8011:443
+          volumes:
+            - ./conf/nginx.conf:/etc/nginx/nginx.conf
+            - ./conf/conf.d:/etc/nginx/conf.d
+            - ./log:/var/log/nginx
+            - ./www:/var/www
+            - ./html:/usr/share/nginx/html
+          environment:
+            - NGINX_PORT=80
+            - TZ=Asia/Shanghai
+EOF
 
 # ctrl+x退出，按y保存，enter确认
 
