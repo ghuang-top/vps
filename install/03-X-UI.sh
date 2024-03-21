@@ -12,18 +12,18 @@ nano docker-compose.yml
 
 # 配置X-UI的docker-compose
 cat <<EOF > docker-compose.yml
-version: "3"
-services:
-    x-ui:
-        image: enwaiax/x-ui:alpha-zh
-        container_name: x-ui
-        restart: unless-stopped
-        volumes:
-          - ./db/:/etc/x-ui/
-          - ./cert/:/root/cert/
-        network_mode: host
-        stdin_open: true
-        tty: true
+            version: "3"
+            services:
+                x-ui:
+                    image: enwaiax/x-ui:alpha-zh
+                    container_name: x-ui
+                    restart: unless-stopped
+                    volumes:
+                      - ./db/:/etc/x-ui/
+                      - ./cert/:/root/cert/
+                    network_mode: host
+                    stdin_open: true
+                    tty: true
 EOF
 
 # ctrl+x退出，按y保存，enter确认
