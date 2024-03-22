@@ -13,6 +13,9 @@ nano docker-compose.yml
 cd /root/data/docker_data/Frps
 nano docker-compose.yml
 
+cd /root/data/docker_data/Frps
+nano frps.toml
+
 cd /root/data/docker_data/Rustdesk
 nano docker-compose.yml
 
