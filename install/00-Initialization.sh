@@ -3,7 +3,7 @@
 
 # VPS Initialization
 apt update -y && apt upgrade -y  # 更新一下包
-apt install wget curl sudo vim git ufw -y  # Debian系统比较干净，安装常用的软件
+apt install wget curl sudo vim git ufw glances -y  # Debian系统比较干净，安装常用的软件
 
 # 1、开启防火墙
 ufw --force enable
