@@ -30,7 +30,7 @@ EOF
 # 创建frps.toml文件并设置配置
 cd /root/data/docker_data/Frps
 touch frps.toml
-nano frps.toml
+# nano frps.toml
 
 cat <<EOF > frps.toml
 [common]
