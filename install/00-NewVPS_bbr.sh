@@ -2,7 +2,7 @@
 
 if dpkg -l | grep -q 'linux-xanmod'; then
     while true; do
-        clear
+        #clear
         kernel_version=$(uname -r)
         echo "您已安装xanmod的BBRv3内核"
         echo "当前内核版本: $kernel_version"
@@ -51,7 +51,7 @@ if dpkg -l | grep -q 'linux-xanmod'; then
         esac
     done
 else
-    clear
+    #clear
     echo "请备份数据，将为你升级Linux内核开启BBR3"
     echo "官网介绍: https://xanmod.org/"
     echo "------------------------------------------------"
