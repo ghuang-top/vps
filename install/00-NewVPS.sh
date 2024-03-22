@@ -93,6 +93,8 @@ openUfwPort() {
 openUfwPort
 
 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-NewVPS_bbr.sh && chmod +x 00-NewVPS_bbr.sh && ./00-NewVPS_bbr.sh
+
 echo "--------输出信息----------"
 echo "------------------------"
 echo "1、优化后的DNS地址为："
@@ -114,8 +116,6 @@ echo "用户: $USER"
 echo "密码: $new_passwd"
 echo "端口: $new_ssh_port"
 echo "------------------------"
-
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-NewVPS_bbr.sh && chmod +x 00-NewVPS_bbr.sh && ./00-NewVPS_bbr.sh
 
 
 
