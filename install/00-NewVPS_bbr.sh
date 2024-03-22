@@ -51,7 +51,7 @@ if dpkg -l | grep -q 'linux-xanmod'; then
         esac
     done
 else
-   clear
+    #clear
     echo "请备份数据，将为你升级Linux内核开启BBR3"
     echo "官网介绍: https://xanmod.org/"
     echo "------------------------------------------------"
