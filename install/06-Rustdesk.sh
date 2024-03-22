@@ -8,7 +8,7 @@ apt install wget curl sudo vim git lsof -y # Debian系统比较干净，安装�
 # 创建Rustdesk安装目录
 mkdir -p /root/data/docker_data/Rustdesk
 cd /root/data/docker_data/Rustdesk
-nano docker-compose.yml
+# nano docker-compose.yml
 
 # 配置Rustdesk的docker-compose
 cat <<EOF > docker-compose.yml

@@ -8,7 +8,7 @@ apt install wget curl sudo vim git lsof -y # Debian系统比较干净，安装�
 # 创建EasyImage安装目录
 mkdir -p /root/data/docker_data/EasyImage
 cd /root/data/docker_data/EasyImage
-nano docker-compose.yml
+# nano docker-compose.yml
 
 # 配置EasyImage的docker-compose
 cat <<EOF > docker-compose.yml

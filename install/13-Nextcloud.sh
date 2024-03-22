@@ -8,7 +8,7 @@ apt install wget curl sudo vim git lsof -y # Debian系统比较干净，安装�
 # 创建安装目录
 mkdir -p /root/data/docker_data/Nextcloud
 cd /root/data/docker_data/Nextcloud
-nano docker-compose.yml
+# nano docker-compose.yml
 
 # 填写docker-compose配置
 cat <<EOF > docker-compose.yml

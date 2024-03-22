@@ -8,7 +8,7 @@ apt install wget curl sudo vim git lsof ufw -y # Debian系统比较干净，安�
 # 创建Frps安装目录
 mkdir -p /root/data/docker_data/Frps 
 cd /root/data/docker_data/Frps
-nano docker-compose.yml
+# nano docker-compose.yml
 
 # 配置Frps的docker-compose
 cat <<EOF > docker-compose.yml
