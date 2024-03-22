@@ -1,64 +1,110 @@
 #!/bin/bash
 
-# 检查操作系统类型和架构
-if [ -r /etc/os-release ]; then
-    . /etc/os-release
-    if [ "$ID" != "debian" ] && [ "$ID" != "ubuntu" ]; then
-        echo "当前环境不支持，仅支持Debian和Ubuntu系统"
-        exit 1
-    fi
-else
-    echo "无法确定操作系统类型"
-    exit 1
-fi
-
-arch=$(dpkg --print-architecture)
-if [ "$arch" != "amd64" ]; then
-    echo "当前环境不支持，仅支持x86_64架构"
-    exit 1
-fi
-
-# 检查是否已安装XanMod内核
 if dpkg -l | grep -q 'linux-xanmod'; then
-    echo "XanMod内核已经安装，无需重复安装"
+    while true; do
+        clear
+        kernel_version=$(uname -r)
+        echo "您已安装xanmod的BBRv3内核"
+        echo "当前内核版本: $kernel_version"
+
+        echo ""
+        echo "内核管理"
+        echo "------------------------"
+        echo "1. 更新BBRv3内核              2. 卸载BBRv3内核"
+        echo "------------------------"
+        echo "0. 返回上一级选单"
+        echo "------------------------"
+        read -p "请输入你的选择: " sub_choice
+
+        case $sub_choice in
+            1)
+                apt purge -y 'linux-*xanmod1*'
+                update-grub
+
+                wget -qO - https://raw.githubusercontent.com/kejilion/sh/main/archive.key | gpg --dearmor -o /usr/share/keyrings/xanmod-archive-keyring.gpg --yes
+
+                echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-release.list
+
+                version=$(wget -q https://raw.githubusercontent.com/kejilion/sh/main/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
+
+                apt update -y
+                apt install -y linux-xanmod-x64v$version
+
+                echo "XanMod内核已更新。重启后生效"
+                rm -f /etc/apt/sources.list.d/xanmod-release.list
+                rm -f check_x86-64_psabi.sh*
+
+                reboot
+                ;;
+            2)
+                apt purge -y 'linux-*xanmod1*'
+                update-grub
+                echo "XanMod内核已卸载。重启后生效"
+                reboot
+                ;;
+            0)
+                break  # 跳出循环，退出菜单
+                ;;
+            *)
+                break  # 跳出循环，退出菜单
+                ;;
+        esac
+    done
 else
+    clear
+    echo "请备份数据，将为你升级Linux内核开启BBR3"
+    echo "官网介绍: https://xanmod.org/"
+    echo "------------------------------------------------"
+    echo "仅支持Debian/Ubuntu 仅支持x86_64架构"
+    echo "VPS是512M内存的，请提前添加1G虚拟内存，防止因内存不足失联！"
+    echo "------------------------------------------------"
+    read -p "确定继续吗？(Y/N): " choice
 
-    # 安装 linux-xanmod-x64v2
-    apt update -y  && apt install -y nano
-    # 在文件末尾添加以下行：
-    echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | sudo tee -a /etc/apt/sources.list
-    wget -qO - https://deb.xanmod.org/gpg.key | sudo apt-key --keyring /usr/share/keyrings/xanmod-archive-keyring.gpg add -
-    sudo apt update
+    case "$choice" in
+        [Yy])
+            if [ -r /etc/os-release ]; then
+                . /etc/os-release
+                if [ "$ID" != "debian" ] && [ "$ID" != "ubuntu" ]; then
+                    echo "当前环境不支持，仅支持Debian和Ubuntu系统"
+                    break
+                fi
+            else
+                echo "无法确定操作系统类型"
+                break
+            fi
 
-    # 安装必要的软件并添加存储库
-    apt update -y
-    apt install -y wget gnupg
-    wget -qO - https://raw.githubusercontent.com/kejilion/sh/main/archive.key | gpg --dearmor -o /usr/share/keyrings/xanmod-archive-keyring.gpg --yes
-    echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-release.list
+            arch=$(dpkg --print-architecture)
+            if [ "$arch" != "amd64" ]; then
+                echo "当前环境不支持，仅支持x86_64架构"
+                break
+            fi
 
-    # 安装XanMod内核并启用BBR3
-    version=$(wget -q https://raw.githubusercontent.com/kejilion/sh/main/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
-    apt install -y linux-xanmod-x64v$version
-    cat > /etc/sysctl.conf << EOF
+            install wget gnupg
+
+            wget -qO - https://raw.githubusercontent.com/kejilion/sh/main/archive.key | gpg --dearmor -o /usr/share/keyrings/xanmod-archive-keyring.gpg --yes
+
+            echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-release.list
+
+            version=$(wget -q https://raw.githubusercontent.com/kejilion/sh/main/check_x86-64_psabi.sh && chmod +x check_x86-64_psabi.sh && ./check_x86-64_psabi.sh | grep -oP 'x86-64-v\K\d+|x86-64-v\d+')
+
+            apt update -y
+            apt install -y linux-xanmod-x64v$version
+
+            cat > /etc/sysctl.conf << EOF
 net.core.default_qdisc=fq_pie
 net.ipv4.tcp_congestion_control=bbr
 EOF
-    sysctl -p
-
-    # 清理临时文件
-    rm -f /etc/apt/sources.list.d/xanmod-release.list
-    rm -f check_x86-64_psabi.sh*
-fi
-
-# 检查BBR3是否成功开启
-congestion_algorithm=$(sysctl -n net.ipv4.tcp_congestion_control)
-queue_algorithm=$(sysctl -n net.core.default_qdisc)
-
-if [[ "$congestion_algorithm" == "bbr" && "$queue_algorithm" == "fq_pie" ]]; then
-    echo "网络拥堵算法: $congestion_algorithm $queue_algorithm"
-else
-    echo "无法启用BBR3，正在重启以应用更改"
-    rm -f /etc/apt/sources.list.d/xanmod-release.list
-    rm -f check_x86-64_psabi.sh*
-    #reboot
+            sysctl -p
+            echo "XanMod内核安装并BBR3启用成功。重启后生效"
+            rm -f /etc/apt/sources.list.d/xanmod-release.list
+            rm -f check_x86-64_psabi.sh*
+            reboot
+            ;;
+        [Nn])
+            echo "已取消"
+            ;;
+        *)
+            echo "无效的选择，请输入 Y 或 N。"
+            ;;
+    esac
 fi
