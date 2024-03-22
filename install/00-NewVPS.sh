@@ -74,8 +74,10 @@ echo "------------------------"
 # 显示当前虚拟内存大小
 echo "------------------------"
 echo "3、当前虚拟内存大小为："
-total_memory=$(free -m | awk 'NR==2{print $2}')
-echo "${total_memory}MB"
+# 获取虚拟内存文件的大小
+swapfile_size=$(du -m /swapfile | awk '{print $1}')
+# 显示虚拟内存大小
+echo "虚拟内存大小为：${swapfile_size}MB"
 echo "------------------------"
 
 # 显示加速状态
@@ -87,8 +89,9 @@ if dpkg -l | grep -q 'linux-xanmod'; then
 else
     # 未安装 xanmod 内核，未开启加速
     echo "未开启加速"
+
+    echo "BBR3加速已成功启用。重启后生效"
+    reboot
 fi
 echo "------------------------"
 
-echo "BBR3加速已成功启用。重启后生效"
-reboot
