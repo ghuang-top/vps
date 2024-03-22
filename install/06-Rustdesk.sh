@@ -27,7 +27,7 @@ services:
       - 8061:21116/udp
       - 8063:21118
     image: rustdesk/rustdesk-server:latest
-    command: hbbs -r rustdesk2.ghuang.top:8062   # hbbs.example.com改成
+    command: hbbs -r rustdesk.ghuang.top:8062   # hbbs.example.com改成
     volumes:
       - ./hbbs:/root
     networks:
@@ -48,7 +48,6 @@ services:
     networks:
       - rustdesk-net
     restart: unless-stopped
-
 EOF
 
 # ctrl+x退出，按y保存，enter确认
@@ -67,4 +66,4 @@ ufw status
 
 # 打印访问链接
 echo "访问 Rustdesk 链接:"
-echo "中继服务器IP: 74.48.16.14:8061"
+echo "中继服务器IP: your_ip_address:8061"

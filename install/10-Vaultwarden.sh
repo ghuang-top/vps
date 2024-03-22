@@ -48,5 +48,5 @@ ufw status
 
 # 打印访问链接
 echo "访问 Vaultwarden 链接:"
-echo "IP: 192.168.1.1:8100"
+echo "IP: your_ip_address:8100"
 echo "admin@example.com"

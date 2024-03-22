@@ -77,10 +77,6 @@ ufw status
 
 # 打印访问链接
 echo "访问 Wordpress 链接:"
-echo "IP: 192.168.1.1:8120"
-echo "Email: eddy"
-echo "Password: Asd123wjsw"
-
-echo "更改"
-echo "Email: ghuang0425@gmail.com"
+echo "IP: your_ip_address:8120"
+echo "Email: admin@gmail.com"
 echo "Password: G&WrOa#TqniQHHVGO6"

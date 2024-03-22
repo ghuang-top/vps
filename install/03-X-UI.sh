@@ -24,11 +24,9 @@ services:
         network_mode: host
         stdin_open: true
         tty: true
-
 EOF
 
 # ctrl+x退出，按y保存，enter确认
-
 
 # 运行docker
 docker-compose up -d 
@@ -40,7 +38,7 @@ ufw status
 
 # 打印访问链接
 echo "访问链接:"
-echo "IP: ip:54321"
+echo "IP: your_ip_address:54321"
 echo "Email: admin"
 echo "Password: admin"
 echo "注意面板URL根路径: /nSAsXv/"

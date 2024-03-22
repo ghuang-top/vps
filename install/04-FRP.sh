@@ -3,7 +3,7 @@
 
 # VPS Initialization
 apt update -y && apt upgrade -y  # 更新一下包
-apt install wget curl sudo vim git lsof ufw -y # Debian系统比较干净，安装常用的软件
+apt install wget curl sudo vim git lsof -y # Debian系统比较干净，安装常用的软件
 
 # 创建Frps安装目录
 mkdir -p /root/data/docker_data/Frps 
@@ -21,11 +21,9 @@ services:
         network_mode: host
         volumes:
             - './frps.toml:/etc/frp/frps.toml'
-
 EOF
 
 # ctrl+x退出，按y保存，enter确认
-
 
 # 创建frps.toml文件并设置配置
 cd /root/data/docker_data/Frps
@@ -40,7 +38,7 @@ bind_port= 8041
 kcp_bind_port = 8041
 
 # dashboard用户名
-dashboard_user=ghuang0425@gmail.com
+dashboard_user=admin@gmail.com
 
 # dashboard密码
 dashboard_pwd=gmail.com
@@ -56,14 +54,10 @@ EOF
 # 运行
 docker-compose up -d 
 
-# 重启docker服务
-docker-compose restart
-
 # 打开防火墙的端口
 ufw allow 8040
 ufw allow 8041
 ufw status
-
 
 # 开启客户端端口
 ufw allow 22
@@ -88,6 +82,6 @@ ufw status
 
 # 打印访问链接
 echo "访问 Frps 链接:"
-echo "IP: 192.168.1.1:8040"
-echo "Email: ghuang0425@gmail.com"
+echo "IP: your_ip_address:8040"
+echo "Email: admin@gmail.com"
 echo "Password: gmail.com"

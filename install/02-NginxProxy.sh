@@ -29,12 +29,6 @@ EOF
 
 # ctrl+x退出，按y保存，enter确认
 
-# 运行docker-compose
-# 查看端口是否被占用
-lsof -i:80  # 80
-lsof -i:443  # 443
-lsof -i:8020  # 81
-
 # 运行
 docker-compose up -d 
 

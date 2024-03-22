@@ -57,6 +57,6 @@ ufw status
 
 # 打印访问链接
 echo "访问 Nextcloud 链接:"
-echo "IP: 192.168.1.1:8130"
-echo "Email: ghuang0425@gmail.com"
+echo "IP: your_ip_address:8130"
+echo "Email: admin@gmail.com"
 echo "Password: gmail.com"

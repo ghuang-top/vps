@@ -23,7 +23,7 @@ services:
         volumes:
             - ./data/postgres:/var/lib/postgresql/data
         environment:
-            - POSTGRES_USER=ghuang0425@gmail.com  # 改成你自己的用户名
+            - POSTGRES_USER=admin@gmail.com  # 改成你自己的用户名
             - POSTGRES_PASSWORD=gmail.com # 改成你自己的密码
             - POSTGRES_DB=joplin
 
@@ -39,7 +39,7 @@ services:
             - APP_PORT=22300
             - APP_BASE_URL=https://joplin1.ghuang.top # 改成反代的域名
             - DB_CLIENT=pg
-            - POSTGRES_USER=ghuang0425@gmail.com  # 与上面的用户名对应！
+            - POSTGRES_USER=admin@gmail.com  # 与上面的用户名对应！
             - POSTGRES_PASSWORD=gmail.com # 与上面的密码对应！
             - POSTGRES_DATABASE=joplin
             - POSTGRES_PORT=5432 # 与上面右边的对应！
@@ -59,6 +59,6 @@ ufw status
 
 # 打印访问链接
 echo "访问 Joplin 链接:"
-echo "IP: 192.168.1.11:8140"
-echo "Email: ghuang0425@gmail.com"
+echo "IP: your_ip_address:8140"
+echo "Email: admin@gmail.com"
 echo "Password: gmail.com"
