@@ -75,3 +75,10 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/Check-
 ```sh 
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-NewVPS.sh && chmod +x 00-NewVPS.sh && ./00-NewVPS.sh
 ```
+
+- 00-NewVPS_login
+```sh 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-NewVPS_login.sh && chmod +x 00-NewVPS_login.sh && ./00-NewVPS_login.sh
+```
+
+chmod +x 00-NewVPS_login.sh && ./00-NewVPS_login.sh
