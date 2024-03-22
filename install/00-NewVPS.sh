@@ -1,18 +1,21 @@
 #!/bin/bash
 
-# 1、优化DNS地址为Cloudflare和Google
+# 优化DNS地址为Cloudflare和Google
+echo "1、优化DNS地址为Cloudflare和Google"
+#========================
 cloudflare_ipv4="1.1.1.1"
 google_ipv4="8.8.8.8"
-
-# 设置DNS地址为Cloudflare和Google（IPv4）
-echo "设置DNS为Cloudflare和Google"
 echo "nameserver $cloudflare_ipv4" > /etc/resolv.conf
 echo "nameserver $google_ipv4" >> /etc/resolv.conf
 
-# 2、修改时区为Asia/Shanghai
+# 修改时区为Asia/Shanghai
+echo "2、修改时区为Asia/Shanghai"
+#========================
 timedatectl set-timezone Asia/Shanghai
 
-# 3、添加虚拟内存大小为1024MB
+# 添加虚拟内存大小为1024MB
+echo "3、添加虚拟内存大小为1024MB"
+#========================
 if [ "$EUID" -ne 0 ]; then
   echo "请以 root 权限运行此脚本。"
   exit 1
@@ -27,8 +30,9 @@ chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
 
-
-# 4、开启BBR3加速（如果已安装linux-xanmod内核）
+# 开启BBR3加速
+echo "4、开启BBR3加速"
+#========================
 if dpkg -l | grep -q 'linux-xanmod'; then
     apt purge -y 'linux-*xanmod1*'
     update-grub
@@ -54,16 +58,33 @@ else
 
 fi
 
-echo "1、优化DNS地址为Cloudflare和Google"
-echo "DNS地址已更新"
+# 显示优化后的DNS地址
+echo "优化后的DNS地址为："
 echo "------------------------"
 cat /etc/resolv.conf
-echo "------------------------"
 
-echo "2、修改时区为Asia/Shanghai"
-echo "3、添加虚拟内存大小为1024MB"
-echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
-echo "虚拟内存大小已调整为1024MB"
+# 显示当前系统时区
+echo "当前时区为："
+echo "------------------------"
+current_timezone=$(timedatectl show --property=Timezone --value)
+echo "$current_timezone"
+
+# 显示当前虚拟内存大小
+echo "当前虚拟内存大小为："
+echo "------------------------"
+total_memory=$(free -m | awk 'NR==2{print $2}')
+echo "${total_memory}MB"
+
+# 显示加速状态
+echo "BBR3加速状态："
+echo "------------------------"
+if dpkg -l | grep -q 'linux-xanmod'; then
+    # 已安装 xanmod 内核，已开启加速
+    echo "已开启加速"
+else
+    # 未安装 xanmod 内核，未开启加速
+    echo "未开启加速"
+fi
 
 echo "BBR3加速已成功启用。重启后生效"
 #reboot
