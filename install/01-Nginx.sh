@@ -40,24 +40,24 @@ nano docker-compose.yml
 
 # 输入docker-compose
 cat <<EOF > docker-compose.yml
-  version: '3'
-  services:
-      nginx:
-          image: nginx
-          container_name: nginx
-          restart: always
-          ports:
-            - 8010:80
-            - 8011:443
-          volumes:
-            - ./conf/nginx.conf:/etc/nginx/nginx.conf
-            - ./conf/conf.d:/etc/nginx/conf.d
-            - ./log:/var/log/nginx
-            - ./www:/var/www
-            - ./html:/usr/share/nginx/html
-          environment:
-            - NGINX_PORT=80
-            - TZ=Asia/Shanghai
+version: '3'
+services:
+    nginx:
+        image: nginx
+        container_name: nginx
+        restart: always
+        ports:
+          - 8010:80
+          - 8011:443
+        volumes:
+          - ./conf/nginx.conf:/etc/nginx/nginx.conf
+          - ./conf/conf.d:/etc/nginx/conf.d
+          - ./log:/var/log/nginx
+          - ./www:/var/www
+          - ./html:/usr/share/nginx/html
+        environment:
+          - NGINX_PORT=80
+          - TZ=Asia/Shanghai
             
 EOF
 

@@ -12,21 +12,33 @@ nano docker-compose.yml
 
 # 配置Nginx Proxy的docker-compose
 cat <<EOF > docker-compose.yml
-  version: '3'
-  services:
-    app:
-      image: 'jc21/nginx-proxy-manager:latest'
-      container_name: nginxproxy
-      restart: unless-stopped
-      ports:
-        - '80:80'  # 保持默认即可，不建议修改左侧的80
-        - '443:443' # 保持默认即可，不建议修改左侧的443
-        - '8020:81'  # 冒号左边可以改成自己服务器未被占用的端口
-      volumes:
-        - ./data:/data # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 data 文件夹中
-        - ./letsencrypt:/etc/letsencrypt  # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 letsencrypt 文件夹中
+version: '3'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginxproxy
+    restart: unless-stopped
+    ports:
+      - '80:80'  # 保持默认即可，不建议修改左侧的80
+      - '443:443' # 保持默认即可，不建议修改左侧的443
+      - '8020:81'  # 冒号左边可以改成自己服务器未被占用的端口
+    volumes:
+      - ./data:/data # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 data 文件夹中
+      - ./letsencrypt:/etc/letsencrypt  # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 letsencrypt 文件夹中
         
 EOF
+
+# 模拟按下 Ctrl + X
+echo -ne '\003' > /dev/tty
+
+# 等待一会儿以确保 Nano 反应
+sleep 1
+
+# 模拟按下 Y（确认保存）
+echo -ne 'Y' > /dev/tty
+
+# 模拟按下 Enter（确认）
+echo -ne '\n' > /dev/tty
 
 # ctrl+x退出，按y保存，enter确认
 
