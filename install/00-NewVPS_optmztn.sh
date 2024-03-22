@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 echo "1、系统更新"
 sys_update(){
     if [ -f "/etc/debian_version" ]; then

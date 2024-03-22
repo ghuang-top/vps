@@ -86,4 +86,9 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-New
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-NewVPS_login.sh && chmod +x 00-NewVPS_login.sh && ./00-NewVPS_login.sh
 ```
 
-chmod +x 00-NewVPS_login.sh && ./00-NewVPS_login.sh
+- 00-NewVPS_bbr
+```sh 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-NewVPS_bbr.sh && chmod +x 00-NewVPS_bbr.sh && ./00-NewVPS_bbr.sh
+```
+
+chmod +x 00-NewVPS_bbr.sh && ./00-NewVPS_bbr.sh
