@@ -28,6 +28,8 @@ services:
         
 EOF
 
+# ctrl+x退出，按y保存，enter确认
+
 # 模拟按下 Ctrl + X
 echo -ne '\003' > /dev/tty
 
@@ -40,7 +42,6 @@ echo -ne 'Y' > /dev/tty
 # 模拟按下 Enter（确认）
 echo -ne '\n' > /dev/tty
 
-# ctrl+x退出，按y保存，enter确认
 
 # 运行docker-compose
 # 查看端口是否被占用
