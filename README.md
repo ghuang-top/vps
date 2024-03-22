@@ -1,6 +1,11 @@
 # vps
 vps脚本
 
+- 00-NewVPS
+```sh 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-NewVPS.sh && chmod +x 00-NewVPS.sh && ./00-NewVPS.sh
+```
+
 - 00-Initialization
 ```sh
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-Initialization.sh && chmod +x 00-Initialization.sh && ./00-Initialization.sh
@@ -69,9 +74,4 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/All-in
 - Check-docker-compose
 ```sh 
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/Check-docker-compose.sh && chmod +x Check-docker-compose.sh && ./Check-docker-compose.sh
-```
-
-- 00-NewVPS
-```sh 
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-NewVPS.sh && chmod +x 00-NewVPS.sh && ./00-NewVPS.sh
 ```
