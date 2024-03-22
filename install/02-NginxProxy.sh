@@ -11,7 +11,8 @@ cd /root/data/docker_data/NginxProxy
 nano docker-compose.yml
 
 # 配置Nginx Proxy的docker-compose
-cat <<EOF > docker-compose.yml
+
+cat > docker-compose.yml << EOF
 version: '3'
 services:
   app:
@@ -25,23 +26,9 @@ services:
     volumes:
       - ./data:/data # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 data 文件夹中
       - ./letsencrypt:/etc/letsencrypt  # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 letsencrypt 文件夹中
-        
 EOF
 
 # ctrl+x退出，按y保存，enter确认
-
-# 模拟按下 Ctrl + X
-echo -ne '\003' > /dev/tty
-
-# 等待一会儿以确保 Nano 反应
-sleep 1
-
-# 模拟按下 Y（确认保存）
-echo -ne 'Y' > /dev/tty
-
-# 模拟按下 Enter（确认）
-echo -ne '\n' > /dev/tty
-
 
 # 运行docker-compose
 # 查看端口是否被占用
