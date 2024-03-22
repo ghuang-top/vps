@@ -59,25 +59,28 @@ else
 fi
 
 # 显示优化后的DNS地址
-echo "优化后的DNS地址为："
 echo "------------------------"
+echo "1、优化后的DNS地址为："
 cat /etc/resolv.conf
+echo "------------------------"
 
 # 显示当前系统时区
-echo "当前时区为："
 echo "------------------------"
+echo "2、当前时区为："
 current_timezone=$(timedatectl show --property=Timezone --value)
 echo "$current_timezone"
+echo "------------------------"
 
 # 显示当前虚拟内存大小
-echo "当前虚拟内存大小为："
 echo "------------------------"
+echo "3、当前虚拟内存大小为："
 total_memory=$(free -m | awk 'NR==2{print $2}')
 echo "${total_memory}MB"
+echo "------------------------"
 
 # 显示加速状态
-echo "BBR3加速状态："
 echo "------------------------"
+echo "BBR3加速状态："
 if dpkg -l | grep -q 'linux-xanmod'; then
     # 已安装 xanmod 内核，已开启加速
     echo "已开启加速"
@@ -85,6 +88,7 @@ else
     # 未安装 xanmod 内核，未开启加速
     echo "未开启加速"
 fi
+echo "------------------------"
 
 echo "BBR3加速已成功启用。重启后生效"
 #reboot
