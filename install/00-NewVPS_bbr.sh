@@ -1,8 +1,5 @@
 #!/bin/bash
 
-
-
-
 # 检查操作系统类型和架构
 if [ -r /etc/os-release ]; then
     . /etc/os-release
