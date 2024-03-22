@@ -11,8 +11,7 @@ cd /root/data/docker_data/NginxProxy
 nano docker-compose.yml
 
 # 配置Nginx Proxy的docker-compose
-
-cat > docker-compose.yml << EOF
+cat <<EOF > docker-compose.yml
 version: '3'
 services:
   app:
