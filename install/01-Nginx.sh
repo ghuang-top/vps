@@ -3,7 +3,7 @@
 
 # VPS Initialization
 apt update -y && apt upgrade -y  # 更新一下包
-apt install wget curl sudo vim git lsof -y # Debian系统比较干净，安装常用的软件
+apt install -y wget curl sudo vim git # Debian系统比较干净，安装常用的软件
 
 # 安装Nginx容器
 # 1、创建nginx容器
