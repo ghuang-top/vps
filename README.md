@@ -65,3 +65,8 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/14-Jop
 ```sh 
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/All-in-One.sh && chmod +x All-in-One.sh && ./All-in-One.sh
 ```
+
+- Check-docker-compose
+```sh 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/Check-docker-compose.sh && chmod +x Check-docker-compose.sh && ./Check-docker-compose.sh
+```
