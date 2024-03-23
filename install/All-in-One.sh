@@ -1,9 +1,6 @@
 #!/bin/bash
 #All-in-One
 
-# 下载并执行00-Initialization脚本
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-Initialization.sh && chmod +x 00-Initialization.sh && ./00-Initialization.sh
-
 # 下载并执行01-Nginx脚本
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/01-Nginx.sh && chmod +x 01-Nginx.sh && ./01-Nginx.sh
 

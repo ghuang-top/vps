@@ -1,6 +1,10 @@
 # vps
 vps脚本
 
+- 00-logins
+```sh 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-logins.sh && chmod +x 00-00-logins.sh && ./00-logins.sh
+```
 
 - 00-Initialization
 ```sh
@@ -72,7 +76,3 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/All-in
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/Check-docker-compose.sh && chmod +x Check-docker-compose.sh && ./Check-docker-compose.sh
 ```
 
-- 00-logins
-```sh 
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-logins.sh && chmod +x 00-00-logins.sh && ./00-logins.sh
-```
