@@ -62,10 +62,12 @@ vps_init
 
 echo "5、优化DNS地址为Cloudflare和Google"
 optimize_DNS(){
-    cloudflare_ipv4="1.1.1.1"
-    google_ipv4="8.8.8.8"
-    echo "nameserver $cloudflare_ipv4" > /etc/resolv.conf
-    echo "nameserver $google_ipv4" >> /etc/resolv.conf
+    echo "nameserver 1.1.1.1" >> /etc/resolv.conf
+    echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+    echo "nameserver 172.31.255.2" >> /etc/resolv.conf
+    echo "nameserver 74.82.42.42" >> /etc/resolv.conf
+    echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+    echo "nameserver 1.0.0.1" >> /etc/resolv.conf
 }
 optimize_DNS
 
