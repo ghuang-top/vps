@@ -15,7 +15,7 @@ cat <<EOF > docker-compose.yml
 version: '3'
 services:
   app:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: 'jc21/nginx-proxy-manager:github-pr-2606'
     container_name: nginxproxy
     restart: unless-stopped
     ports:
