@@ -42,5 +42,5 @@ ufw status
 # 打印访问链接
 echo "访问 EasyImage 链接:"
 echo "IP: your_ip_address:8110"
-echo "Email: admin@123"
-echo "Password: admin"
+echo "账号: admin"
+echo "密码: admin@123"
