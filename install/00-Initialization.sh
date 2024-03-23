@@ -287,6 +287,10 @@ echo "5、开放的端口"
 ufw status
 echo "------------------------"
 
+echo "7、禁止Ping"
+echo "nano /etc/ufw/before.rules"
+echo "------------------------"
+
 echo "6、Fail2ban"
 echo "重启服务"
 fail2ban-client status
@@ -295,6 +299,3 @@ systemctl status fail2ban --no-pager && echo "Continue with the next script" && 
 systemctl restart fail2ban
 echo "------------------------"
 
-echo "7、禁止Ping"
-echo "nano /etc/ufw/before.rules"
-echo "------------------------"
