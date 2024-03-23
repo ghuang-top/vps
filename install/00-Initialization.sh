@@ -139,7 +139,19 @@ EOF
 }
 run_Fail2ban
 
-echo "9、BBRv3加速"
+
+echo "9、禁止Ping"
+run_banPing(){
+# nano /etc/ufw/before.rules
+# 替换before.rules文件中的echo-request规则
+sudo sed -i 's/-A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT/-A ufw-before-input -p icmp --icmp-type echo-request -j DROP/g' /etc/ufw/before.rules
+# 重新加载UFW防火墙规则
+sudo ufw reload
+}
+run_banPing
+
+
+echo "10、BBRv3加速"
 run_bbr(){
 if dpkg -l | grep -q 'linux-xanmod'; then
     while true; do
@@ -242,16 +254,6 @@ EOF
 fi
 }
 run_bbr
-
-echo "9、禁止Ping"
-run_banPing(){
-# nano /etc/ufw/before.rules
-# 替换before.rules文件中的echo-request规则
-sudo sed -i 's/-A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT/-A ufw-before-input -p icmp --icmp-type echo-request -j DROP/g' /etc/ufw/before.rules
-# 重新加载UFW防火墙规则
-sudo ufw reload
-}
-run_banPing
 
 
 echo "--------输出信息----------"
