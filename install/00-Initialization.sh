@@ -296,4 +296,5 @@ systemctl restart fail2ban
 echo "------------------------"
 
 echo "7、禁止Ping"
+echo "nano /etc/ufw/before.rules"
 echo "------------------------"
