@@ -77,13 +77,31 @@ run_timeZone
 
 echo "7、添加虚拟内存大小为1024MB"
 add_memory(){
-    # 删除旧的 /swapfile
-    rm -f /swapfil
-    # 创建新的 swap 分区
-    dd if=/dev/zero of=/swapfile bs=1M count=1024
-    chmod 600 /swapfile
-    mkswap /swapfile
-    swapon /swapfile
+# 如果当前有 swap 文件在使用，先关闭它
+if swapon -s | grep -q '/swapfile'; then
+    swapoff /swapfile
+fi
+
+# 删除旧的 /swapfile
+rm -f /swapfile
+
+# 创建新的 swap 分区
+dd if=/dev/zero of=/swapfile bs=1M count=1024
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+
+# 根据不同系统添加相应配置
+if [ -f /etc/alpine-release ]; then
+    echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+    echo "nohup swapon /swapfile" >> /etc/local.d/swap.start
+    chmod +x /etc/local.d/swap.start
+    rc-update add local
+else
+    echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+fi
+
+echo "虚拟内存大小已设置为1024MB"
 }
 add_memory
 
@@ -227,6 +245,7 @@ run_bbr
 
 echo "9、禁止Ping"
 run_banPing(){
+# nano /etc/ufw/before.rules
 # 替换before.rules文件中的echo-request规则
 sudo sed -i 's/-A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT/-A ufw-before-input -p icmp --icmp-type echo-request -j DROP/g' /etc/ufw/before.rules
 # 重新加载UFW防火墙规则
