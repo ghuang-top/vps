@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 用户设置
-new_passwd="2345uh1yPo"
+new_passwd="d!Fssw97SoALHa"
 new_ssh_port="4399"
 
 echo "1、修改密码"
