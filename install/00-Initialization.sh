@@ -114,6 +114,9 @@ EOF
 #systemctl restart fail2ban
 #fail2ban-client status
 #fail2ban-client status sshd
+
+# 解禁指定IP
+#fail2ban-client set sshd unbanip 192.0.0.1 
 }
 run_Fail2ban
 
