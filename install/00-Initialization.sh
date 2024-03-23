@@ -87,14 +87,13 @@ add_memory(){
 }
 add_memory
 
-
 echo "8、Fail2ban"
 run_Fail2ban(){
 # 1. 安装与启动 Fail2ban
 apt update -y && apt install -y fail2ban
 systemctl start fail2ban
 systemctl enable fail2ban
-systemctl status fail2ban --no-pager && echo "Continue with the next script" && exit 0
+#systemctl status fail2ban --no-pager && echo "Continue with the next script" && exit 0
 
 # 2. 主配置文件操作
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
@@ -112,12 +111,11 @@ backend = systemd
 EOF
 
 # 4. 重启服务
-systemctl restart fail2ban
+#systemctl restart fail2ban
 #fail2ban-client status
 #fail2ban-client status sshd
 }
 run_Fail2ban
-
 
 echo "9、BBRv3加速"
 run_bbr(){
@@ -224,7 +222,6 @@ fi
 run_bbr
 
 
-
 echo "--------输出信息----------"
 echo "------------------------"
 echo "1、优化后的DNS地址为："
@@ -249,3 +246,13 @@ echo "------------------------"
 echo "5、开放的端口"
 ufw status
 echo "------------------------"
+
+echo "6、Fail2ban"
+echo "重启服务"
+fail2ban-client status
+fail2ban-client status sshd
+systemctl status fail2ban --no-pager && echo "Continue with the next script" && exit 0
+systemctl restart fail2ban
+echo "------------------------"
+
+
