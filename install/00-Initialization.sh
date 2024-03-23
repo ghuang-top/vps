@@ -87,32 +87,6 @@ add_memory(){
 }
 add_memory
 
-echo "--------输出信息----------"
-echo "------------------------"
-echo "1、优化后的DNS地址为："
-cat /etc/resolv.conf
-echo "------------------------"
-
-echo "2、当前时区为："
-current_timezone=$(timedatectl show --property=Timezone --value)
-echo "$current_timezone"
-echo "------------------------"
-
-echo "3、当前虚拟内存大小为："
-swapfile_size=$(du -m /swapfile | awk '{print $1}')
-echo "虚拟内存大小为：${swapfile_size}MB"
-echo "------------------------"
-
-echo "4、查看Docker和Docker-Compose的版本"
-docker --version
-docker-compose --version
-echo "------------------------"
-
-echo "5、开放的端口"
-ufw status
-echo "------------------------"
-
-
 
 echo "8、BBRv3加速"
 run_bbr(){
@@ -217,3 +191,29 @@ EOF
 fi
 }
 run_bbr
+
+
+echo "--------输出信息----------"
+echo "------------------------"
+echo "1、优化后的DNS地址为："
+cat /etc/resolv.conf
+echo "------------------------"
+
+echo "2、当前时区为："
+current_timezone=$(timedatectl show --property=Timezone --value)
+echo "$current_timezone"
+echo "------------------------"
+
+echo "3、当前虚拟内存大小为："
+swapfile_size=$(du -m /swapfile | awk '{print $1}')
+echo "虚拟内存大小为：${swapfile_size}MB"
+echo "------------------------"
+
+echo "4、查看Docker和Docker-Compose的版本"
+docker --version
+docker-compose --version
+echo "------------------------"
+
+echo "5、开放的端口"
+ufw status
+echo "------------------------"
