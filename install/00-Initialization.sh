@@ -11,8 +11,8 @@ fi
 mkdir -p /root/init
 cd /root/init
 
-echo "1、修改端口和密码"
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/00-logins.sh && chmod +x 00-logins.sh && ./00-logins.sh
+#echo "1、修改端口和密码"
+#curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/00-logins.sh && chmod +x 00-logins.sh && ./00-logins.sh
 
 
 echo "2、系统更新"
