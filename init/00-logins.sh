@@ -1,4 +1,5 @@
 #!/bin/bash
+# chmod +x 00-logins.sh && ./00-logins.sh
 
 # 用户设置
 new_passwd="d!Fssw97SoALHa"

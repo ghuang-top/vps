@@ -1,4 +1,5 @@
 #!/bin/bash
+# chmod +x 04-ufw.sh && ./04-ufw.sh
 
 # 1、安装 ufw
 apt update -y && apt install -y ufw
@@ -14,4 +15,8 @@ echo "当前端口$current_port"
 ufw allow $current_port
 ufw allow 80
 ufw allow 443
+
+echo "------------------------"
+echo "开放的端口"
 ufw status
+echo "------------------------"

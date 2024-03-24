@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# chmod +x 10-bbr.sh && ./10-bbr.sh
 
 if dpkg -l | grep -q 'linux-xanmod'; then
     while true; do

@@ -1,7 +1,15 @@
 #!/bin/bash
+# chmod +x 03-docker.sh && ./03-docker.sh
 
-# 6、安装docker
+# 安装docker
 curl -fsSL https://get.docker.com | sudo sh
 
-# 7、安装 Docker Compose
+# 安装 Docker Compose
 apt install -y docker-compose
+
+
+echo "------------------------"
+echo "Docker的版本"
+docker --version
+docker-compose --version
+echo "------------------------"
