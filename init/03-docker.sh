@@ -3,11 +3,23 @@
 
 echo "初始化vps"
 
-# 安装docker
-curl -fsSL https://get.docker.com | sudo sh
+# 检查 Docker 是否已安装
+if ! command -v docker &> /dev/null; then
+    # 如果 Docker 未安装，则安装它
+    echo "安装 Docker..."
+    curl -fsSL https://get.docker.com | sudo sh
+else
+    echo "Docker 已经安装."
+fi
 
 # 安装 Docker Compose
-apt install -y docker-compose
+if ! command -v docker-compose &> /dev/null; then
+    # 如果 Docker Compose 未安装，则安装它
+    echo "安装 Docker Compose..."
+    apt install -y docker-compose
+else
+    echo "Docker Compose 已经安装."
+fi
 
 echo "------------------------"
 echo "Docker的版本"
