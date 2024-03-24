@@ -47,8 +47,8 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/07-addMem
 
 
 # 9、禁止Ping
-echo "步骤9："
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/09-banPing.sh && chmod +x 09-banPing.sh && ./09-banPing.sh
+#echo "步骤9："
+#curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/09-banPing.sh && chmod +x 09-banPing.sh && ./09-banPing.sh
 
 
 # 8、Fail2ban
