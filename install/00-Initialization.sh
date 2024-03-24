@@ -75,7 +75,7 @@ echo "3、虚拟内存："
 echo "当前虚拟内存大小为：$(du -m /swapfile | awk '{print $1}')MB"
 echo "------------------------"
 
-echo "4、查看Docker和Docker-Compose的版本"
+echo "4、查看Docker的版本"
 docker --version
 docker-compose --version
 echo "------------------------"
