@@ -15,40 +15,49 @@ cd /root/init
 #curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/00-logins.sh && chmod +x 00-logins.sh && ./00-logins.sh
 
 
-echo "2、系统更新"
+# 2、系统更新
+echo "步骤2："
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/01-sysUpdate.sh && chmod +x 01-sysUpdate.sh && ./01-sysUpdate.sh
 
 
-echo "3. 系统清理"
+# 3. 系统清理
+echo "步骤3："
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/02-sysCleanup.sh && chmod +x 02-sysCleanup.sh && ./02-sysCleanup.sh
 
 
-echo "4、初始化vps"
+# 4、初始化vps
+echo "步骤4："
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/03-docker.sh && chmod +x 03-docker.sh && ./03-docker.sh
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/04-ufw.sh && chmod +x 04-ufw.sh && ./04-ufw.sh
 
 
-echo "5、优化DNS地址为Cloudflare和Google"
+# 5、优化DNS地址为Cloudflare和Google
+echo "步骤5："
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/05-optimizeDNS.sh && chmod +x 05-optimizeDNS.sh && ./05-optimizeDNS.sh
 
 
-echo "6、修改时区为Asia/Shanghai"
+# 6、修改时区为Asia/Shanghai
+echo "步骤6："
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/06-timeZone.sh && chmod +x 06-timeZone.sh && ./06-timeZone.sh
 
 
-echo "7、添加虚拟内存大小为1024MB"
+# 7、添加虚拟内存大小为1024MB
+echo "步骤7："
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/07-addMemory.sh && chmod +x 07-addMemory.sh && ./07-addMemory.sh
 
 
-echo "9、禁止Ping"
+# 9、禁止Ping
+echo "步骤9："
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/09-banPing.sh && chmod +x 09-banPing.sh && ./09-banPing.sh
 
 
-echo "8、Fail2ban"
+# 8、Fail2ban
+echo "步骤10："
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/08-fail2ban.sh && chmod +x 08-fail2ban.sh && ./08-fail2ban.sh
 
 
-echo "10、BBRv3加速"
+# 10、BBRv3加速
+echo "步骤11："
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/10-bbr.sh && chmod +x 10-bbr.sh && ./10-bbr.sh
 
 

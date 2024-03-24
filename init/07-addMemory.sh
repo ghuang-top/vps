@@ -1,6 +1,7 @@
 #!/bin/bash
 # chmod +x 07-addMemory.sh && ./07-addMemory.sh
 
+echo "添加虚拟内存大小为1024MB"
 
 # 如果当前有 swap 文件在使用，先关闭它
 if swapon -s | grep -q '/swapfile'; then

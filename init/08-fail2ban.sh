@@ -1,6 +1,7 @@
 #!/bin/bash
 # chmod +x 08-fail2ban.sh && ./08-fail2ban.sh
 
+echo "Fail2ban"
 
 # 1. 安装与启动 Fail2ban
 apt update -y && apt install -y fail2ban

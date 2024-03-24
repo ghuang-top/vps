@@ -1,6 +1,8 @@
 #!/bin/bash
 # chmod +x 05-optimizeDNS.sh && ./05-optimizeDNS.sh
 
+echo "优化DNS地址为Cloudflare和Google"
+
 # 删除旧的DNS地址
 sed -i '/^nameserver/d' /etc/resolv.conf
 

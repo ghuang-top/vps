@@ -1,6 +1,8 @@
 #!/bin/bash
 # chmod +x 04-ufw.sh && ./04-ufw.sh
 
+echo "初始化vps"
+
 # 1、安装 ufw
 apt update -y && apt install -y ufw
  

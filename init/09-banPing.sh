@@ -1,6 +1,7 @@
 #!/bin/bash
 #chmod +x 09-banPing.sh && ./09-banPing.sh
 
+echo "禁止Ping"
 
 # nano /etc/ufw/before.rules
 # 替换before.rules文件中的echo-request规则

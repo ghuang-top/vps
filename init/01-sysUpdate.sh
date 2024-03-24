@@ -1,6 +1,8 @@
 #!/bin/bash
 # chmod +x 01-sysUpdate.sh && ./01-sysUpdate.sh
 
+echo "系统更新"
+
 if [ -f "/etc/debian_version" ]; then
     apt update -y && DEBIAN_FRONTEND=noninteractive apt full-upgrade -y
 fi
