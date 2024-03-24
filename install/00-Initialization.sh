@@ -84,13 +84,13 @@ echo "5、开放的端口"
 ufw status
 echo "------------------------"
 
-echo "7、禁止Ping"
+echo "6、禁止Ping"
 echo "用以下命令查看是否更改"
 echo "nano /etc/ufw/before.rules"
 # echo "ufw reload"
 echo "------------------------"
 
-echo "6、Fail2ban"
+echo "7、Fail2ban"
 echo "重启服务"
 fail2ban-client status
 fail2ban-client status sshd
