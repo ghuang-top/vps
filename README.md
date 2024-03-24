@@ -82,3 +82,72 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/All-in
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/Check-docker-compose.sh && chmod +x Check-docker-compose.sh && ./Check-docker-compose.sh
 ```
 
+
+- Docker
+  
+```yaml
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./certs:/etc/nginx/certs
+      - ./html:/var/www/html
+      - ./log/nginx:/var/log/nginx
+
+  php:
+    image: php:fpm
+    container_name: php
+    restart: always
+    volumes:
+      - ./html:/var/www/html
+
+  php74:
+    image: php:7.4.33-fpm
+    container_name: php74
+    restart: always
+    volumes:
+      - ./html:/var/www/html
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: webroot
+      MYSQL_USER: kejilion
+      MYSQL_PASSWORD: kejilionYYDS
+
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    volumes:
+      - ./redis:/data
+```
+
+
+- 证书申请
+
+```yaml
+curl https://get.acme.sh | sh
+
+~/.acme.sh/acme.sh --register-account -m xxxx@gmail.com --issue -d web1.ghuang.top  -d web2.ghuang.top  -d web3.ghuang.top -d web4.ghuang.top -d web5.ghuang.top -d web6.ghuang.top --standalone --key-file /home/web/certs/key.pem --cert-file /home/web/certs/cert.pem  --force
+
+```
+
+```yaml
+curl https://get.acme.sh | sh
+
+~/.acme.sh/acme.sh --register-account -m xxxx@gmail.com --issue -d web11.ghuang.top  -d web12.ghuang.top  -d web13.ghuang.top -d web14.ghuang.top -d web15.ghuang.top -d web16.ghuang.top --standalone --key-file /home/web/certs/key.pem --cert-file /home/web/certs/cert.pem  --force
+
+```
