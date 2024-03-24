@@ -3,7 +3,6 @@
 
 # 服务器初始设置
 apt update -y && apt upgrade -y  #更新一下包
-apt install -y wget curl sudo vim git # Debian系统比较干净，安装常用的软件
 
 # 创建安装目录
 mkdir -p /root/data/docker_data/Nextcloud

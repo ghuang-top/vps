@@ -3,7 +3,6 @@
 
 # VPS Initialization
 apt update -y && apt upgrade -y  # 更新一下包
-apt install -y wget curl sudo vim git # Debian系统比较干净，安装常用的软件
 
 # 创建Frps安装目录
 mkdir -p /root/data/docker_data/Frps 
@@ -57,7 +56,6 @@ docker-compose up -d
 # 打开防火墙的端口
 ufw allow 8040
 ufw allow 8041
-ufw status
 
 # 开启客户端端口
 ufw allow 22
