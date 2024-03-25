@@ -11,37 +11,21 @@ cd /root/data/docker_data/Nextcloud
 
 # 填写docker-compose配置
 cat <<EOF > docker-compose.yml
-version: "3"
+version: '2.1'
 services:
   nextcloud:
-    container_name: nextcloud-app
-    image: nextcloud:latest
+    image: lscr.io/linuxserver/nextcloud:latest
+    container_name: nextcloud
     restart: unless-stopped
     ports:
-      - 8130:80
-      - 8131:443
+      - 8130:443
+    volumes:
+      - ./config:/config
+      - ./data:/data
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Shanghai
-      - MYSQL_HOST=mysql
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-      - MYSQL_PASSWORD=nextcloud
-    volumes:
-      - ./data:/var/www/html
-
-  mysql:
-    image: mysql:8.0
-    container_name: nextcloud-db
-    restart: unless-stopped
-    environment:
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-      - MYSQL_PASSWORD=nextcloud
-      - MYSQL_ROOT_PASSWORD=nextcloud
-    volumes:
-      - ./db:/var/lib/mysql
 EOF
 
 # ctrl+x退出，按y保存，enter确认
