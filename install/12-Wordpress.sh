@@ -13,21 +13,6 @@ cd /root/data/docker_data/Wordpress
 cat <<EOF > docker-compose.yml
 version: '3.0'
 services:
-  db:
-    image: mysql:5.7 # arm架构的机器请将mysql:5.7改为mysql:oracle
-    container_name: wordpress-db
-    restart: unless-stopped
-    # command: --max-binlog-size=200M --expire-logs-days=2 # 使用mysql 8.0的小伙伴建议使用
-    environment:
-      MYSQL_ROOT_PASSWORD: password # 按需修改
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: password # 按需修改
-    volumes:
-      - './db:/var/lib/mysql'
-    networks:
-      - default
-
   app:
     image: wordpress:latest
     container_name: wordpress-app
@@ -43,25 +28,13 @@ services:
     volumes:
       - './app:/var/www/html'
     links:
-      - db:db
+      - mysql:db
     depends_on:
       - redis
       - db
     networks:
       - default
 
-  redis:
-    image: redis:alpine
-    container_name: wordpress-redis
-    restart: unless-stopped
-    volumes:
-      - ./redis-data:/data
-    networks:
-      - default
-
-#networks:
-# default:
-#  name: wordpress
 EOF
 
 # ctrl+x退出，按y保存，enter确认
