@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 00-logins.sh && ./00-logins.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/00-logins.sh && chmod +x 00-logins.sh && ./00-logins.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/00-logins.sh && chmod +x 00-logins.sh && ./00-logins.sh
 
 # 用户设置
 new_passwd="d!Fssw97SoALHa"

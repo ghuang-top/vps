@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 04-ufw.sh && ./04-ufw.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/04-ufw.sh && chmod +x 04-ufw.sh && ./04-ufw.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/04-ufw.sh && chmod +x 04-ufw.sh && ./04-ufw.sh
 
 echo "初始化vps"
 
