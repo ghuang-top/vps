@@ -1,16 +1,21 @@
 #!/bin/bash
-# 06-Rustdesk
+# chmod +x 06-Rustdesk.sh && ./06-Rustdesk.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/06-Rustdesk.sh && chmod +x 06-Rustdesk.sh && ./06-Rustdesk.sh
 
-# VPS Initialization
+ipv4_address=$(curl -s ipv4.ip.sb)
+port80=8061
+
+
+# 1、更新包
 apt update -y && apt upgrade -y  # 更新一下包
 
 
-# 创建Rustdesk安装目录
+# 2、创建 `Rustdesk` 安装目录
 mkdir -p /root/data/docker_data/Rustdesk
 cd /root/data/docker_data/Rustdesk
-# nano docker-compose.yml
 
-# 配置Rustdesk的docker-compose
+
+# 3、配置Duplicati的docker-compose
 cat <<EOF > docker-compose.yml
 version: '3'
 
@@ -23,11 +28,11 @@ services:
     container_name: hbbs
     ports:
       - 8060:21115
-      - 8061:21116
-      - 8061:21116/udp
+      - $port80:21116
+      - $port80:21116/udp
       - 8063:21118
     image: rustdesk/rustdesk-server:latest
-    command: hbbs -r rustdesk.ghuang.top:8062   # hbbs.example.com改成
+    command: hbbs -r rustdesk2.ghuang.top:8062   # hbbs.example.com改成
     volumes:
       - ./hbbs:/root
     networks:
@@ -50,20 +55,22 @@ services:
     restart: unless-stopped
 EOF
 
-# ctrl+x退出，按y保存，enter确认
 
-# 运行
+# 6、安装
 docker-compose up -d 
 
-# 打开防火墙的端口
-ufw allow 8060/tcp
-ufw allow 8061/tcp
-ufw allow 8062/tcp
-ufw allow 8063/tcp
-ufw allow 8064/tcp
+# 7、打开防火墙的端口
+ufw allow 8060
+ufw allow 8061
+ufw allow 8062
+ufw allow 8063
+ufw allow 8064
 ufw allow 8061/udp
 ufw status
 
+
 # 打印访问链接
-echo "访问 Rustdesk 链接:"
-echo "中继服务器IP: your_ip_address:8061"
+echo "------------------------"
+echo "访问链接:"
+echo "http://$ipv4_address:$port80"
+echo "------------------------"

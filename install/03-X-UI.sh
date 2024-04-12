@@ -1,10 +1,10 @@
 #!/bin/bash
 # chmod +x 03-X-UI.sh && ./03-X-UI.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/03-X-UI.sh && chmod +x 03-X-UI.sh && ./03-X-UI.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/03-X-UI.sh && chmod +x 03-X-UI.sh && ./03-X-UI.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=54321
-port443=8100
+port443=8030
 
 
 # 1、更新包

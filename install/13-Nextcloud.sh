@@ -1,45 +1,68 @@
 #!/bin/bash
-# 13-Nextcloud
+# chmod +x 13-Nextcloud.sh && ./13-Nextcloud.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/13-Nextcloud.sh && chmod +x 13-Nextcloud.sh && ./13-Nextcloud.sh
 
-# 服务器初始设置
+ipv4_address=$(curl -s ipv4.ip.sb)
+port80=8130
+port443=8131
+
+
+# 1、更新包
 apt update -y && apt upgrade -y  #更新一下包
 
 # 创建安装目录
 mkdir -p /root/data/docker_data/Nextcloud
 cd /root/data/docker_data/Nextcloud
-# nano docker-compose.yml
 
-# 填写docker-compose配置
+# 3、填写docker-compose配置
 cat <<EOF > docker-compose.yml
-version: '2.1'
+version: "3"
+
 services:
   nextcloud:
-    image: lscr.io/linuxserver/nextcloud:latest
-    container_name: nextcloud
+    container_name: nextcloud-app
+    image: nextcloud:latest
     restart: unless-stopped
     ports:
-      - 8130:443
-    volumes:
-      - ./config:/config
-      - ./data:/data
+      - $port80:80
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Shanghai
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=nextcloud
+    volumes:
+      - ./data:/var/www/html
+
+  mysql:
+    image: mysql:8.0
+    container_name: nextcloud-db
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=nextcloud
+      - MYSQL_ROOT_PASSWORD=nextcloud
+    volumes:
+      - ./db:/var/lib/mysql
+
+#volumes:
+#  mysql:
+#  nextcloud:
+
 EOF
 
-# ctrl+x退出，按y保存，enter确认
-
-# 运行
+# 4、安装
 docker-compose up -d 
 
-# 打开防火墙的端口
-ufw allow 8130
-ufw allow 8131
+# 5、打开防火墙的端口
+ufw allow $port80
+ufw allow $port433
 ufw status
 
 # 打印访问链接
-echo "访问 Nextcloud 链接:"
-echo "IP: your_ip_address:8130"
+echo "------------------------"
+echo "访问链接:"
+echo "http://$ipv4_address:$port80"
 echo "Email: admin@gmail.com"
 echo "Password: gmail.com"
+echo "------------------------"

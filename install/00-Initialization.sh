@@ -1,0 +1,101 @@
+#!/bin/bash
+# chmod +x 00-Initialization.sh && ./00-Initialization.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/00-Initialization.sh && chmod +x 00-Initialization.sh && ./00-Initialization.sh
+
+echo "1、判断权限"
+if [ "$EUID" -ne 0 ]; then
+  echo "请以 root 权限运行此脚本。"
+  exit 1
+fi
+
+
+mkdir -p /root/init
+cd /root/init
+
+#echo "1、修改端口和密码"
+#curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/00-logins.sh && chmod +x 00-logins.sh && ./00-logins.sh
+
+
+# 2、系统更新
+echo "步骤2："
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/01-sysUpdate.sh && chmod +x 01-sysUpdate.sh && ./01-sysUpdate.sh
+
+
+# 3. 系统清理1
+echo "步骤3："
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/02-sysCleanup.sh && chmod +x 02-sysCleanup.sh && ./02-sysCleanup.sh
+
+
+# 4、初始化vps
+echo "步骤4："
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/03-docker.sh && chmod +x 03-docker.sh && ./03-docker.sh
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/04-ufw.sh && chmod +x 04-ufw.sh && ./04-ufw.sh
+
+
+# 5、优化DNS地址为Cloudflare和Google
+echo "步骤5："
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/05-optimizeDNS.sh && chmod +x 05-optimizeDNS.sh && ./05-optimizeDNS.sh
+
+
+# 6、修改时区为Asia/Shanghai
+echo "步骤6："
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/06-timeZone.sh && chmod +x 06-timeZone.sh && ./06-timeZone.sh
+
+
+# 7、添加虚拟内存大小为1024MB
+echo "步骤7："
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/07-addMemory.sh && chmod +x 07-addMemory.sh && ./07-addMemory.sh
+
+
+# 9、禁止Ping
+echo "步骤9："
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/09-banPing.sh && chmod +x 09-banPing.sh && ./09-banPing.sh
+
+
+# 8、Fail2ban
+echo "步骤10："
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/08-fail2ban.sh && chmod +x 08-fail2ban.sh && ./08-fail2ban.sh
+
+
+# 10、BBRv3加速
+echo "步骤11："
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/init/10-bbr.sh && chmod +x 10-bbr.sh && ./10-bbr.sh
+
+
+echo "--------输出信息----------"
+echo "------------------------"
+echo "1、优化后的DNS地址为："
+cat /etc/resolv.conf
+echo "------------------------"
+
+echo "2、当前时区为："
+echo "$(timedatectl show --property=Timezone --value)"
+echo "------------------------"
+
+echo "3、虚拟内存："
+echo "当前虚拟内存大小为：$(du -m /swapfile | awk '{print $1}')MB"
+echo "------------------------"
+
+echo "4、查看Docker的版本"
+docker --version
+docker-compose --version
+echo "------------------------"
+
+echo "5、开放的端口"
+ufw status
+echo "------------------------"
+
+echo "6、禁止Ping"
+echo "用以下命令查看是否更改"
+echo "nano /etc/ufw/before.rules"
+# echo "ufw reload"
+echo "------------------------"
+
+echo "7、Fail2ban"
+echo "重启服务"
+fail2ban-client status
+fail2ban-client status sshd
+systemctl status fail2ban --no-pager && echo "Continue with the next script" && exit 0
+systemctl restart fail2ban
+echo "------------------------"
+
