@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 14-Joplin.sh && ./14-Joplin.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/14-Joplin.sh && chmod +x 14-Joplin.sh && ./14-Joplin.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/14-Joplin.sh && chmod +x 14-Joplin.sh && ./14-Joplin.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=8140

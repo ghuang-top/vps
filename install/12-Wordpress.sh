@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 12-Wordpress.sh && ./12-Wordpress.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/12-Wordpress.sh && chmod +x 12-Wordpress.sh && ./12-Wordpress.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/12-Wordpress.sh && chmod +x 12-Wordpress.sh && ./12-Wordpress.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=8120

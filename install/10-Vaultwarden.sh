@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 10-Vaultwarden.sh && ./10-Vaultwarden.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/10-Vaultwarden.sh && chmod +x 10-Vaultwarden.sh && ./10-Vaultwarden.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/10-Vaultwarden.sh && chmod +x 10-Vaultwarden.sh && ./10-Vaultwarden.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=8100

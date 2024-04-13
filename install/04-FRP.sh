@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 04-FRP.sh && ./04-FRP.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/04-FRP.sh && chmod +x 04-FRP.sh && ./04-FRP.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/04-FRP.sh && chmod +x 04-FRP.sh && ./04-FRP.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=8040

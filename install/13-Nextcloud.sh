@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 13-Nextcloud.sh && ./13-Nextcloud.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/13-Nextcloud.sh && chmod +x 13-Nextcloud.sh && ./13-Nextcloud.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/13-Nextcloud.sh && chmod +x 13-Nextcloud.sh && ./13-Nextcloud.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=8130
