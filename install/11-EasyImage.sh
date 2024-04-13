@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 11-EasyImage.sh && ./11-EasyImage.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/11-EasyImage.sh && chmod +x 11-EasyImage.sh && ./11-EasyImage.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/11-EasyImage.sh && chmod +x 11-EasyImage.sh && ./11-EasyImage.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=8110

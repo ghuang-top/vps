@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 06-Rustdesk.sh && ./06-Rustdesk.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/06-Rustdesk.sh && chmod +x 06-Rustdesk.sh && ./06-Rustdesk.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/06-Rustdesk.sh && chmod +x 06-Rustdesk.sh && ./06-Rustdesk.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=8061

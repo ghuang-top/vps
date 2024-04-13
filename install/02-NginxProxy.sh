@@ -1,6 +1,7 @@
 #!/bin/bash
 # chmod +x 02-NginxProxy.sh && ./02-NginxProxy.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/02-NginxProxy.sh && chmod +x 02-NginxProxy.sh && ./02-NginxProxy.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/02-NginxProxy.sh && chmod +x 02-NginxProxy.sh && ./02-NginxProxy.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/02-NginxProxy.sh && chmod +x 02-NginxProxy.sh && ./02-NginxProxy.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port=8020

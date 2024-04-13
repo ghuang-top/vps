@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 07-Duplicati.sh && ./07-Duplicati.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/07-Duplicati.sh && chmod +x 07-Duplicati.sh && ./07-Duplicati.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/07-Duplicati.sh && chmod +x 07-Duplicati.sh && ./07-Duplicati.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=8070

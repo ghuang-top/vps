@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 05-Zerotier.sh && ./05-Zerotier.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/05-Zerotier.sh && chmod +x 05-Zerotier.sh && ./05-Zerotier.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/05-Zerotier.sh && chmod +x 05-Zerotier.sh && ./05-Zerotier.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=8050
