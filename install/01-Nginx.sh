@@ -1,6 +1,6 @@
 #!/bin/bash
 # chmod +x 01-Nginx.sh && ./01-Nginx.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/blog/main/sh/01-Nginx.sh && chmod +x 01-Nginx.sh && ./01-Nginx.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/01-Nginx.sh && chmod +x 01-Nginx.sh && ./01-Nginx.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=80
