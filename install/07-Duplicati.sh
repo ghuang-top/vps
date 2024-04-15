@@ -37,16 +37,16 @@ services:
 EOF
 
 
-# 6、安装
+# 4、安装
 docker-compose up -d 
 
-# 7、打开防火墙的端口
+# 5、打开防火墙的端口
 ufw allow $port80
 ufw allow $port443
 ufw status
 
 
-# 打印访问链接
+# 6、打印访问链接
 echo "------------------------"
 echo "访问链接:"
 echo "http://$ipv4_address:$port80"
