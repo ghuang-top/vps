@@ -1,10 +1,10 @@
 #!/bin/bash
-# chmod +x 08-Alist.sh && ./08-Alist.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/08-Alist.sh && chmod +x 08-Alist.sh && ./08-Alist.sh
+# chmod +x 07-Alist.sh && ./07-Alist.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/07-Alist.sh && chmod +x 07-Alist.sh && ./07-Alist.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
-port80=8080
-port443=8081
+port80=8070
+port443=8071
 
 
 # 1、更新包

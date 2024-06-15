@@ -1,10 +1,10 @@
 #!/bin/bash
-# chmod +x 07-Duplicati.sh && ./07-Duplicati.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/07-Duplicati.sh && chmod +x 07-Duplicati.sh && ./07-Duplicati.sh
+# chmod +x 08-Duplicati.sh && ./08-Duplicati.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/08-Duplicati.sh && chmod +x 08-Duplicati.sh && ./08-Duplicati.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
-port80=8070
-port443=8071
+port80=8080
+port443=8081
 
 
 # 1、更新包
@@ -32,7 +32,7 @@ services:
       - /root/data/docker_data/Duplicati/backups:/backups
       - /root/data:/source
     ports:
-      - 8070:8200
+      - $port80:8200
     restart: unless-stopped
 EOF
 
