@@ -1,6 +1,6 @@
 #!/bin/bash
-# chmod +x 00-ssh-disable-password.sh && ./00-ssh-disable-password.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/00-ssh-disable-password.sh && chmod +x 00-ssh-disable-password.sh && ./00-ssh-disable-password.sh
+# chmod +x 01-disable-password.sh && ./01-disable-password.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/01-disable-password.sh && chmod +x 01-disable-password.sh && ./01-disable-password.sh
 
 
 # 用户设置
