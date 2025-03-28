@@ -1,5 +1,6 @@
 #!/bin/bash
 # chmod +x 01-sysUpdate.sh && ./01-sysUpdate.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/01-sysUpdate.sh && chmod +x 01-sysUpdate.sh && ./01-sysUpdate.sh
 
 echo "系统更新"
 

@@ -1,5 +1,6 @@
 #!/bin/bash
 # chmod +x 03-docker.sh && ./03-docker.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/03-docker.sh && chmod +x 03-docker.sh && ./03-docker.sh
 
 echo "初始化vps"
 

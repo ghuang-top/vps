@@ -1,6 +1,6 @@
 #!/bin/bash
-# chmod +x 08-Duplicati.sh && ./08-Duplicati.sh
-# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/08-Duplicati.sh && chmod +x 08-Duplicati.sh && ./08-Duplicati.sh
+# chmod +x 09-Syncthing.sh && ./09-Syncthing.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/09-Syncthing.sh && chmod +x 09-Syncthing.sh && ./09-Syncthing.sh
 
 ipv4_address=$(curl -s ipv4.ip.sb)
 port80=8090

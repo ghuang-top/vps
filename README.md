@@ -1,21 +1,44 @@
 # vps
 vps脚本
 
+## 初始化脚本 (init)
 
-- kejilion
+- 00-disable-password
 ```sh 
-curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/00-disable-password.sh && chmod +x 00-disable-password.sh && ./00-disable-password.sh
 ```
 
-- 00-logins
+- 01-sysUpdate
 ```sh 
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/00-logins.sh && chmod +x 00-logins.sh && ./00-logins.sh
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/01-sysUpdate.sh && chmod +x 01-sysUpdate.sh && ./01-sysUpdate.sh
 ```
 
-- 00-Initialization
-```sh
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/00-Initialization.sh && chmod +x 00-Initialization.sh && ./00-Initialization.sh
+- 02-sysCleanup
+```sh 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/02-sysCleanup.sh && chmod +x 02-sysCleanup.sh && ./02-sysCleanup.sh
 ```
+
+- 03-docker
+```sh 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/03-docker.sh && chmod +x 03-docker.sh && ./03-docker.sh
+```
+
+- ddns-go
+```sh 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/ddns-go.sh && chmod +x ddns-go.sh && ./ddns-go.sh
+```
+
+- vps_init
+```sh 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/vps_init.sh && chmod +x vps_init.sh && ./vps_init.sh
+```
+
+- xray-manager
+```sh 
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/xray-manager.sh && chmod +x xray-manager.sh && ./xray-manager.sh
+```
+
+## 安装脚本 (install)
 
 - 01-Nginx
 ```sh
@@ -47,6 +70,31 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/05-Zer
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/06-Rustdesk.sh && chmod +x 06-Rustdesk.sh && ./06-Rustdesk.sh
 ```
 
+- 07-Alist
+```sh
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/07-Alist.sh && chmod +x 07-Alist.sh && ./07-Alist.sh
+```
+
+- 08-Duplicati
+```sh
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/08-Duplicati.sh && chmod +x 08-Duplicati.sh && ./08-Duplicati.sh
+```
+
+- 09-Syncthing
+```sh
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/09-Syncthing.sh && chmod +x 09-Syncthing.sh && ./09-Syncthing.sh
+```
+
+- 10-Vaultwarden
+```sh
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/10-Vaultwarden.sh && chmod +x 10-Vaultwarden.sh && ./10-Vaultwarden.sh
+```
+
+- 11-EasyImage
+```sh
+curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/11-EasyImage.sh && chmod +x 11-EasyImage.sh && ./11-EasyImage.sh
+```
+
 - 12-Wordpress
 ```sh
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/12-Wordpress.sh && chmod +x 12-Wordpress.sh && ./12-Wordpress.sh
@@ -60,84 +108,4 @@ curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/13-Nex
 - 14-Joplin
 ```sh
 curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/14-Joplin.sh && chmod +x 14-Joplin.sh && ./14-Joplin.sh
-```
-
-- All-in-One
-```sh 
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/All-in-One.sh && chmod +x All-in-One.sh && ./All-in-One.sh
-```
-
-- Check-docker-compose
-```sh 
-curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/install/Check-docker-compose.sh && chmod +x Check-docker-compose.sh && ./Check-docker-compose.sh
-```
-
-
-- Docker
-  
-```yaml
-version: '3.8'
-
-services:
-  nginx:
-    image: nginx
-    container_name: nginx
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./conf.d:/etc/nginx/conf.d
-      - ./certs:/etc/nginx/certs
-      - ./html:/var/www/html
-      - ./log/nginx:/var/log/nginx
-
-  php:
-    image: php:fpm
-    container_name: php
-    restart: always
-    volumes:
-      - ./html:/var/www/html
-
-  php74:
-    image: php:7.4.33-fpm
-    container_name: php74
-    restart: always
-    volumes:
-      - ./html:/var/www/html
-
-  mysql:
-    image: mysql
-    container_name: mysql
-    restart: always
-    volumes:
-      - ./mysql:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: webroot
-      MYSQL_USER: kejilion
-      MYSQL_PASSWORD: kejilionYYDS
-
-  redis:
-    image: redis
-    container_name: redis
-    restart: always
-    volumes:
-      - ./redis:/data
-```
-
-
-- 证书申请
-
-```yaml
-curl https://get.acme.sh | sh
-
-~/.acme.sh/acme.sh --register-account -m xxxx@gmail.com --issue -d web1.ghuang.top  -d web2.ghuang.top  -d web3.ghuang.top -d web4.ghuang.top -d web5.ghuang.top -d web6.ghuang.top --standalone --key-file /home/web/certs/key.pem --cert-file /home/web/certs/cert.pem  --force
-
-```
-
-```yaml
-curl https://get.acme.sh | sh
-
-~/.acme.sh/acme.sh --register-account -m xxxx@gmail.com --issue -d web11.ghuang.top  -d web12.ghuang.top  -d web13.ghuang.top -d web14.ghuang.top -d web15.ghuang.top -d web16.ghuang.top --standalone --key-file /home/web/certs/key.pem --cert-file /home/web/certs/cert.pem  --force
-
 ```

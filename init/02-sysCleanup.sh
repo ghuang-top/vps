@@ -1,5 +1,6 @@
 #!/bin/bash
 # chmod +x 02-sysCleanup.sh && ./02-sysCleanup.sh
+# curl -sS -O https://raw.githubusercontent.com/ghuang-top/vps/main/init/02-sysCleanup.sh && chmod +x 02-sysCleanup.sh && ./02-sysCleanup.sh
 
 echo "系统清理"
 
